@@ -1,0 +1,148 @@
+{
+  "seed": "faithful-writing-ai-corpus-2026-10-18-v1",
+  "commit": "b90072cd218b6ebdbd1d1478ce6e439677f18192",
+  "algorithm": "Within each model/domain, filter publisher label=0 and attribution=model and 500<=non-whitespace chars<=800. Sort by SHA256(seed|source_path|CSV record index including header). Select first quota; skip repeated nonempty (domain,original_id). Model/domain iteration follows lists stored here. No lexical/style score used in eligibility or ordering.",
+  "models": [
+    "claude-3.5-haiku",
+    "deepseek-r1",
+    "deepseek-v3",
+    "doubao-1.5-pro",
+    "gemini-2.5-flash",
+    "gpt-4o",
+    "qwen-3"
+  ],
+  "domains": [
+    "news",
+    "composition"
+  ],
+  "quotas": "3 news + 4 composition per model; gpt-4o has one additional news item.",
+  "counts": [
+    {
+      "model": "claude-3.5-haiku",
+      "domain": "news",
+      "total_records": 2999,
+      "eligible_records": 1076,
+      "sampled": 3,
+      "file_sha256": "b4d98fcfc5ac5ceab261e5a4e155ea2fef5c03429dbc80d21f4cbae05ca55345",
+      "source_file": "benchmark data/news/CReD_news_claude-3.5-haiku.csv"
+    },
+    {
+      "model": "claude-3.5-haiku",
+      "domain": "composition",
+      "total_records": 1081,
+      "eligible_records": 990,
+      "sampled": 4,
+      "file_sha256": "e8b767a27efe0c81b085ac1c3707f0426090017686dc12de8442f2d5cbf6fda7",
+      "source_file": "benchmark data/composition/CReD_composition_claude-3.5-haiku.csv"
+    },
+    {
+      "model": "deepseek-r1",
+      "domain": "news",
+      "total_records": 2969,
+      "eligible_records": 883,
+      "sampled": 3,
+      "file_sha256": "33d0075747245f5bff3b3acdf3c402e3d0210e81f9696f02e06e7bb2fc6b3bf5",
+      "source_file": "benchmark data/news/CReD_news_deepseek-r1.csv"
+    },
+    {
+      "model": "deepseek-r1",
+      "domain": "composition",
+      "total_records": 1081,
+      "eligible_records": 235,
+      "sampled": 4,
+      "file_sha256": "cb977c507be5f6eb45cc44ed633d40995e3e577dc6c90cb6a080531b5a94a9ac",
+      "source_file": "benchmark data/composition/CReD_composition_deepseek-r1.csv"
+    },
+    {
+      "model": "deepseek-v3",
+      "domain": "news",
+      "total_records": 2999,
+      "eligible_records": 967,
+      "sampled": 3,
+      "file_sha256": "4028167e37acb5379a476ecc78a5c65e19578e5ab5673a47ebf5b19e48bd7607",
+      "source_file": "benchmark data/news/CReD_news_deepseek-v3.csv"
+    },
+    {
+      "model": "deepseek-v3",
+      "domain": "composition",
+      "total_records": 1080,
+      "eligible_records": 267,
+      "sampled": 4,
+      "file_sha256": "7f4bc0f34c1c6d42cd0ba9e5b626d95f4a1ba1eb8a57cd24e028feae78e5d08f",
+      "source_file": "benchmark data/composition/CReD_composition_deepseek-v3.csv"
+    },
+    {
+      "model": "doubao-1.5-pro",
+      "domain": "news",
+      "total_records": 2966,
+      "eligible_records": 1161,
+      "sampled": 3,
+      "file_sha256": "8a6640f830356b382e9b0afb5e7d9d61ae7c3e9a8857a68b5fa42f3b30e831c3",
+      "source_file": "benchmark data/news/CReD_news_doubao-1.5-pro.csv"
+    },
+    {
+      "model": "doubao-1.5-pro",
+      "domain": "composition",
+      "total_records": 1078,
+      "eligible_records": 156,
+      "sampled": 4,
+      "file_sha256": "6fcc5f1f57e5859d93aeb71f8497e6b7c3dd71130123c8ea8e1b8ace8ead7f58",
+      "source_file": "benchmark data/composition/CReD_composition_doubao-1.5-pro.csv"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "domain": "news",
+      "total_records": 2846,
+      "eligible_records": 956,
+      "sampled": 3,
+      "file_sha256": "5ba96ee5bc80179f0728977f4d9eb42c37f038acf9c950cd88b97f43c602aa76",
+      "source_file": "benchmark data/news/CReD_news_gemini-2.5-flash.csv"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "domain": "composition",
+      "total_records": 1078,
+      "eligible_records": 7,
+      "sampled": 4,
+      "file_sha256": "c6dd271e5dcbac76f034ffaa93b7952cd61f865f138a2c011561798b4c2a97ca",
+      "source_file": "benchmark data/composition/CReD_composition_gemini-2.5-flash.csv"
+    },
+    {
+      "model": "gpt-4o",
+      "domain": "news",
+      "total_records": 2988,
+      "eligible_records": 995,
+      "sampled": 4,
+      "file_sha256": "00ca9625b5f57f3aa1ce235375661b21fcc0aecf318d99208c43f70d4293bc0c",
+      "source_file": "benchmark data/news/CReD_news_gpt-4o.csv"
+    },
+    {
+      "model": "gpt-4o",
+      "domain": "composition",
+      "total_records": 1073,
+      "eligible_records": 8,
+      "sampled": 4,
+      "file_sha256": "0a884e3c1aac117b2034cb55b29246bc024f68d2d62eecfd23bfeb2b39975e73",
+      "source_file": "benchmark data/composition/CReD_composition_gpt-4o.csv"
+    },
+    {
+      "model": "qwen-3",
+      "domain": "news",
+      "total_records": 2999,
+      "eligible_records": 1166,
+      "sampled": 3,
+      "file_sha256": "9d59244e12cb486793134391572a9bfb7117e9ed199669a7e64dcc2bd7da93aa",
+      "source_file": "benchmark data/news/CReD_news_qwen-3.csv"
+    },
+    {
+      "model": "qwen-3",
+      "domain": "composition",
+      "total_records": 1077,
+      "eligible_records": 103,
+      "sampled": 4,
+      "file_sha256": "d554af0ae846e1bf7196dd7251c6ae6cc6ff8921dec3751185612c7f05eca7e3",
+      "source_file": "benchmark data/composition/CReD_composition_qwen-3.csv"
+    }
+  ],
+  "total": 50
+}

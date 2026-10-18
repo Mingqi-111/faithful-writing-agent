@@ -1,0 +1,10 @@
+{
+  "status": "frozen",
+  "date": "2026-10-18",
+  "total_read": 85,
+  "primary_problem_count": 50,
+  "primary_control_count": 7,
+  "all_initial_review_fields_unchanged": true,
+  "reproduction_checked": "Both public scripts executed against checksum-verified cached source CSV files in a separate work directory; IDs, text hashes, sorting hashes and sampling metadata matched exactly. No remote code executed.",
+  "source_content_distribution": "Only public metadata and original reviews may be copied into project deliverables; private article full text excluded."
+}

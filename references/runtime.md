@@ -13,6 +13,15 @@ python3 scripts/agent.py doctor
 python3 scripts/agent.py start --text-file /工作目录/work/source.txt --scene douyin-tech --host codex/unknown
 ```
 
+`start` 另支持 `--deai off|light|strong`，默认 off。宿主根据正文之外的用户请求选择强度：去 AI 味/像真人写的使用 light；同时允许改语气或论述结构才使用 strong。反馈、任务恢复和 benchmark 都沿用本次模式，不能在 `draft` 阶段偷偷升级强度。旧记录没有该字段时视为 off，跨规则版本仍须按原版本门槛重新验证。
+
+```text
+python3 -I scripts/agent.py doctor
+python3 scripts/agent.py start --text-file /工作目录/work/source.txt --scene general --deai light --host claude/unknown
+```
+
+支持 Python 的 `-I` 隔离模式；这是解释器选项，不是本 Agent 的子命令参数。
+
 文章通过文件工具写成 UTF-8。原文、反馈备注、JSON 里可能有反引号或命令替换，不能直接插入 shell；需要传备注时优先 `--note-file`。路径按宿主终端规则引用。
 
 `start` 返回 `id`、原文、场景、当前偏好与生成任务。`--user` 默认 local；多人使用必须显式区分，目录不能向其他用户公开。`--host` 使用真实应用/模型配置标识，例如知道应用但不知道实际模型时使用 `codex/unknown`。不要猜模型名或把名称当作已验证的身份凭证。
@@ -26,6 +35,8 @@ python3 scripts/agent.py draft --run RUN_ID --text-file /工作目录/work/draft
 ```
 
 返回 `task.type=review`，内含 source、candidate、static_issues、场景、`run_id`、`draft_sha256` 和严格 `schema`。以该 schema 为准准备 review.json；不生成“默认通过”的文件来绕过真正审校。
+
+light/strong 还带原文风格线索和 source/candidate 对比线索，审评须填写 `template_check` 的三个字符串数组。它们不代替语义判断；原文合法的反驳和引语可以触发提示，却不应被强行删除。off 的 schema 保持 0.2 的字段，不提交 template_check。
 
 有独立审校工具时把这份任务和 review.md 交给新上下文。不要把整个父会话、生成者自评或候选策略的优劣暗示传入。没有能力时自行检查并填 `review_mode=self_review`。`reviewer` 写实际审校任务标识；若是自行审稿，写清楚同一会话。只有真实人工评审才用 human。
 

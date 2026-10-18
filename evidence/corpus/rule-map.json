@@ -1,0 +1,91 @@
+[
+  {
+    "case_id": "corpus-repeated-evaluation-001",
+    "basis": "semantic_review",
+    "source_ids": [
+      "AI-001",
+      "AI-003",
+      "AI-019",
+      "MEDIA-005",
+      "MEDIA-042",
+      "MEDIA-094"
+    ],
+    "reason": "去掉换词重复的同一判断，保留不同统计口径、分论点与叙事回环；重复形式本身不是删除依据。"
+  },
+  {
+    "case_id": "corpus-functional-list-001",
+    "basis": "protected_structure",
+    "source_ids": [
+      "MEDIA-008",
+      "MEDIA-064",
+      "AI-015"
+    ],
+    "reason": "操作步骤、限制条件和时间线各承担独立功能，不能为了打散整齐结构而改坏。"
+  },
+  {
+    "case_id": "corpus-attributed-quote-001",
+    "basis": "protected_source",
+    "source_ids": [
+      "MEDIA-018",
+      "MEDIA-026"
+    ],
+    "reason": "报道中的直接引语及归属受保护；口语、问答与有功能的对仗不自动清洗。"
+  },
+  {
+    "case_id": "corpus-opinion-metaphor-001",
+    "basis": "protected_judgment",
+    "source_ids": [
+      "MEDIA-044",
+      "MEDIA-059",
+      "AI-040"
+    ],
+    "reason": "保留作者独立价值判断、有效比喻和真实排除项；抽象或抒情不等于无信息。"
+  },
+  {
+    "case_id": "corpus-no-invented-experience-001",
+    "basis": "fidelity_boundary",
+    "source_ids": [
+      "MEDIA-052",
+      "MEDIA-095"
+    ],
+    "reason": "署名见闻只能支持该作者的经历；不能为别的文章新增亲历、感官或身份来制造真人感。"
+  },
+  {
+    "case_id": "corpus-empty-scaffolding-001",
+    "basis": "semantic_review",
+    "source_ids": [
+      "AI-023",
+      "AI-031"
+    ],
+    "reason": "栏目、预告和转场没有新增信息时可收紧；结构整理不能删除原文功能限制或价值判断。"
+  },
+  {
+    "case_id": "corpus-service-address-001",
+    "basis": "out_of_domain_boundary",
+    "source_ids": [],
+    "reason": "媒体与作文样本不覆盖客服礼貌。此用例是场景外推保护，不声称研究语料验证了客服风格。"
+  },
+  {
+    "case_id": "corpus-genre-is-not-label-001",
+    "basis": "negative_control",
+    "source_ids": [
+      "MEDIA-042",
+      "MEDIA-059",
+      "AI-015"
+    ],
+    "reason": "正式语体、整齐结构、结尾感悟都可能有功能，文章的来源类别不等于质量或作者识别标签。"
+  },
+  {
+    "case_id": "corpus-missing-details-001",
+    "basis": "fidelity_boundary",
+    "source_ids": [
+      "AI-029",
+      "AI-031",
+      "AI-038",
+      "AI-079",
+      "MEDIA-073",
+      "MEDIA-090"
+    ],
+    "reason": "缺失信息与不确定性必须保留；不得补日期、填占位符，或把待通知误写成尚未确定。"
+  }
+]

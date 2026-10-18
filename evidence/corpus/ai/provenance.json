@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/HeraldofLight/C-ReD",
+  "pinned_commit": "b90072cd218b6ebdbd1d1478ce6e439677f18192",
+  "retrieval_date": "2026-10-18",
+  "readme_url": "https://raw.githubusercontent.com/HeraldofLight/C-ReD/b90072cd218b6ebdbd1d1478ce6e439677f18192/README.md",
+  "readme_sha256": "14ab31a34b0c2ccfe59ccddc51faa5f952d8571fa825715f00f1801991f8d211",
+  "license_files_found": [],
+  "license_conclusion": "No LICENSE/LICENCE/COPYING path found in pinned repository tree. This is not permission to redistribute full text.",
+  "generation_source_evidence": [
+    "Primary README describes 9 LLM generators and an AI-generated corpus.",
+    "Selected CSV records have label=0 and attribution equal to model file name."
+  ],
+  "generation_source_limit": "Publisher-level provenance only; no provider execution logs, signed outputs, or independent replication checked.",
+  "claim_limit": "Model annotations assess editable expression problems; they do not classify authorship of unknown human text or verify source facts.",
+  "publication_policy": "Public folder contains row locators, hashes and original review metadata only, with no article text, generation prompts or source quotations. Private folder contains downloaded source data and full text for local research only.",
+  "paper_url": "https://arxiv.org/abs/2604.11796",
+  "study_scope": "85 fully reviewed records; issue-enriched primary set of 50 clear-edit candidates plus 7 initial controls; all judgments are provisional single-model review."
+}

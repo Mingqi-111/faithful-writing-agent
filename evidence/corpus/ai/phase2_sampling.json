@@ -1,0 +1,63 @@
+{
+  "phase": 2,
+  "requested_additional_max": 35,
+  "count": 35,
+  "seed": "faithful-writing-ai-corpus-2026-10-18-v1",
+  "rule": "Freeze phase 1. For each same model in original order, take five new items by the same original hash ordering and length/label/attribution filters. Prefer composition after observing more obvious editable issues in phase 1; if eligible unused composition is exhausted, fill remaining quota with news. Skip all previously used (domain,original_id). No keyword/style regex is used. Selection after reading therefore belongs to an explicitly issue-enriched development study, not a prevalence sample.",
+  "counts": [
+    {
+      "model": "claude-3.5-haiku",
+      "domain": "composition",
+      "additional_sampled": 5,
+      "remaining_eligible_at_scan_start": 964
+    },
+    {
+      "model": "deepseek-r1",
+      "domain": "composition",
+      "additional_sampled": 5,
+      "remaining_eligible_at_scan_start": 222
+    },
+    {
+      "model": "deepseek-v3",
+      "domain": "composition",
+      "additional_sampled": 5,
+      "remaining_eligible_at_scan_start": 246
+    },
+    {
+      "model": "doubao-1.5-pro",
+      "domain": "composition",
+      "additional_sampled": 5,
+      "remaining_eligible_at_scan_start": 136
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "domain": "composition",
+      "additional_sampled": 1,
+      "remaining_eligible_at_scan_start": 1
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "domain": "news",
+      "additional_sampled": 4,
+      "remaining_eligible_at_scan_start": 946
+    },
+    {
+      "model": "gpt-4o",
+      "domain": "composition",
+      "additional_sampled": 2,
+      "remaining_eligible_at_scan_start": 2
+    },
+    {
+      "model": "gpt-4o",
+      "domain": "news",
+      "additional_sampled": 3,
+      "remaining_eligible_at_scan_start": 978
+    },
+    {
+      "model": "qwen-3",
+      "domain": "composition",
+      "additional_sampled": 5,
+      "remaining_eligible_at_scan_start": 81
+    }
+  ]
+}

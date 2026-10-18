@@ -1,0 +1,122 @@
+[
+  {
+    "id": "media_boundary_01",
+    "boundary": "来源与表达质量分开",
+    "evidence_ids": [
+      "MEDIA-008",
+      "MEDIA-044",
+      "MEDIA-085",
+      "MEDIA-097"
+    ],
+    "action": "具名媒体文章也使用顺序词、排比、比喻与完整的倡议结尾；这些可以按任务目标编辑，但不能单独据此声称是 AI。",
+    "scope_limit": "本库不是人工写作真值标签集，也未标注每一句的表达质量。"
+  },
+  {
+    "id": "media_boundary_02",
+    "boundary": "功能性列表和编号",
+    "evidence_ids": [
+      "MEDIA-008",
+      "MEDIA-064",
+      "MEDIA-066",
+      "MEDIA-069",
+      "MEDIA-070"
+    ],
+    "action": "保留步骤、并列职责、准入条件和问答编号。只有相同信息被无必要复述时才合并。"
+  },
+  {
+    "id": "media_boundary_03",
+    "boundary": "引语和归因",
+    "evidence_ids": [
+      "MEDIA-018",
+      "MEDIA-026",
+      "MEDIA-029",
+      "MEDIA-030",
+      "MEDIA-087"
+    ],
+    "action": "先区分叙述、受访者话语和被引用材料；不把引语里的营销腔或官样表述算作作者口吻，不擅自改动直接引语。"
+  },
+  {
+    "id": "media_boundary_04",
+    "boundary": "真实立场、比喻和文体",
+    "evidence_ids": [
+      "MEDIA-044",
+      "MEDIA-053",
+      "MEDIA-057",
+      "MEDIA-059",
+      "MEDIA-062",
+      "MEDIA-097"
+    ],
+    "action": "保留作者已有立场、感受与叙述对象；评论、散文允许修辞与收束，不以统一口语标准压平。"
+  },
+  {
+    "id": "media_boundary_05",
+    "boundary": "亲历不能补造",
+    "evidence_ids": [
+      "MEDIA-052",
+      "MEDIA-059",
+      "MEDIA-095",
+      "MEDIA-098"
+    ],
+    "action": "只有原文明确存在的见闻才能保留为亲历；不得为了自然感补出我用过、我见过、朋友说等来源。"
+  },
+  {
+    "id": "media_boundary_06",
+    "boundary": "转场是否推动信息",
+    "evidence_ids": [
+      "MEDIA-018",
+      "MEDIA-024",
+      "MEDIA-026",
+      "MEDIA-098"
+    ],
+    "action": "以时间、空间、争议或问题推进的转场有功能；删除空转场应以删后信息和逻辑仍完整为依据，而非以连接词黑名单代替判断。",
+    "scope_limit": "这些是有功能转场的保护例，不是空转场负例。"
+  },
+  {
+    "id": "media_boundary_07",
+    "boundary": "重复是否固定口径或组织论证",
+    "evidence_ids": [
+      "MEDIA-005",
+      "MEDIA-042",
+      "MEDIA-044",
+      "MEDIA-082",
+      "MEDIA-094"
+    ],
+    "action": "区分统计口径重复、分论点同构、导读重复和修辞照应；具名媒体也可有可编辑冗余，不实行媒体全文豁免。"
+  },
+  {
+    "id": "media_boundary_08",
+    "boundary": "限制、否定和不确定性",
+    "evidence_ids": [
+      "MEDIA-053",
+      "MEDIA-064",
+      "MEDIA-070",
+      "MEDIA-071",
+      "MEDIA-073",
+      "MEDIA-075",
+      "MEDIA-076",
+      "MEDIA-090"
+    ],
+    "action": "保留仅限、除外、不得、相关、可能、或许、计划等语义边界；保留时间、单位、范围与出处。"
+  },
+  {
+    "id": "media_boundary_09",
+    "boundary": "身份与协作角色",
+    "evidence_ids": [
+      "MEDIA-036",
+      "MEDIA-054",
+      "MEDIA-067",
+      "MEDIA-081",
+      "MEDIA-083",
+      "MEDIA-086",
+      "MEDIA-089"
+    ],
+    "action": "正文作者、采访整理者、参与记者、图片作者和编辑分开记录；页面带姓名并不足以给正文贴上个人独立创作标签。"
+  },
+  {
+    "id": "media_boundary_10",
+    "boundary": "必要客服礼貌",
+    "evidence_ids": [],
+    "action": "本库没有客服对话样本，不从新闻文风推导客服礼貌删减规则。需用用户认可的客服样本单独校准。",
+    "scope_limit": "没有媒体证据，明确缺口。"
+  }
+]

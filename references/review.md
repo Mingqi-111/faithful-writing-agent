@@ -12,6 +12,26 @@
 4. 是否符合场景且清楚自然；无实际问题时不强迫修改。词、句型、三连否定和标点单独出现不是错误。
 5. Benchmark 的逐项约束与表达目标是否满足。为了风格而删除作者立场仍是内容错误。
 
+## 开启去模板化时的边界
+
+任务 `deai=light/strong` 时，删去同一判断里重复的程度词、没有实质作用的模板互动和预告，不算漏失内容；仍要保留该判断及其方向、关键强度。strong 可以删除只为引出后文、没有独立命题的“不是 X”铺垫，但不能删除真实的原因排除、事实否定或作者比较。例如“并非 AI 能力突然提升，而是成本不合算”包含因果判断，应保留。
+
+“所有人→很多人”“从来→通常”会改变范围或频率，不能因 strong 就当作保真。“强烈反对→不太赞成”、漏掉独立评价、数字/主体/条件/因果改变、新增事实，也仍是内容错误。句式相同本身不构成错误，不为满足“至少拆两处”而硬删有效判断。
+
+比较 `source_style_hints`、候选提示和 `comparison_hints` 所定位的片段，同时自己核对词表未覆盖的表达。检查是否增加了冒号、对称句、句首衔接或假揭示，以及是否把特色口语扁平化。脚本提示可误报；原文已自然则可原样保留，不能为了显示工作量而重写。
+
+开启模式的 review 必须额外填写：
+
+```json
+{"template_check":{"added_patterns":[],"remaining_patterns":[],"flattened_colloquial":[]}}
+```
+
+三个字段均为短文本数组，记录可核对的片段和理由。`added_patterns` 记录实际新增的套路；`remaining_patterns` 记录仍留的模式及保留理由；`flattened_colloquial` 记录被书面化的口语及是否需要恢复。数组为空应代表实际检查后未发现，不能机械复制默认值。原文中的正常事实排除被扫描命中时，可在 remaining_patterns 解释它应当保留；无需伪造一个内容错误。
+
+词表零命中不能替代语义层的表达审校。另查同义评价跨段复读、空转场或空栏目、多个分论点是否实际相同，以及是否为了具体化编造细节。需要修正时可分别使用 `SEMANTIC_REPETITION`、`EMPTY_TRANSITION`、`EMPTY_SCAFFOLDING`、`GENRE_MISMATCH` 等具体 warning；代码名本身不证明问题。说明重复了哪个命题、哪一段没有新增信息，不仅写“像 AI”。若候选补造事实或经历，则按内容 error 处理。真实步骤、时间线、术语重复、直接引语、文学照应和独立观点应保留；候选好坏不能由来源标签决定。
+
+这些检查均属于 warning。确实损害表达时给出具体 warning 并令 needs_revision=true；只是格式需要或合理保留时说明理由即可。出现真正的内容变化，仍按下面的 error 规则处理。off 模式沿用原审校 schema，不新增 template_check 字段。
+
 按照脚本返回的 schema 填写 JSON。`fidelity_pass` 表示内容关系保留；`scene_pass` 表示场景适当；`needs_revision` 只在有具体值得修正的问题时为 true。`naturalness` 是 1–5 的编辑判断，不是作者为人的概率。issues 每项包含 code、severity（error/warning）、source、candidate、message，引用具体片段并给短理由。
 
 只写可核对的结论和证据，不要求或输出隐藏推理。存在内容改变时 fidelity_pass=false 且给出 error；不得用较高自然度抵消。

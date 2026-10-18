@@ -1,0 +1,47 @@
+{
+  "method": "规范化正文 SHA-256 去精确重复；标题检查；去空白文本的字符5-gram Jaccard检查近重复",
+  "unique_url_count": 100,
+  "unique_title_count": 100,
+  "unique_body_hash_count": 100,
+  "pair_count": 4950,
+  "max_jaccard": 0.01681,
+  "top_pairs": [
+    {
+      "jaccard": 0.01681,
+      "ids": [
+        "MEDIA-085",
+        "MEDIA-086"
+      ]
+    },
+    {
+      "jaccard": 0.01458,
+      "ids": [
+        "MEDIA-005",
+        "MEDIA-006"
+      ]
+    },
+    {
+      "jaccard": 0.01157,
+      "ids": [
+        "MEDIA-067",
+        "MEDIA-068"
+      ]
+    },
+    {
+      "jaccard": 0.01023,
+      "ids": [
+        "MEDIA-005",
+        "MEDIA-009"
+      ]
+    },
+    {
+      "jaccard": 0.00995,
+      "ids": [
+        "MEDIA-066",
+        "MEDIA-067"
+      ]
+    }
+  ],
+  "above_0_6_pairs": 0,
+  "limitation": "字符重合审计不保证语义独立，也不证明首发原创。"
+}

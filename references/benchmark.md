@@ -22,7 +22,17 @@ python3 scripts/agent.py benchmark --mode prepare --limit 3 --host codex/unknown
 python3 scripts/agent.py benchmark --mode report --id BENCHMARK_ID
 ```
 
-20 条公开用例含原文、场景、必须保留/禁止新增的语义约束，部分还有表达改善目标。`style_goals` 不是授权删除作者独立观点。逐稿评审必须实际核对这些条件，未满足的具体问题写进 issues 并请求修正。
+34 条公开用例含原文、场景、必须保留/禁止新增的语义约束，部分还有表达改善目标。在原 20 条基础上，增加 5 条模式/保真对照与 9 条语料研究相关的原创合成用例：同篇评论的 off/light/strong、已有自然表达的负对照、真实排除项与量化范围，以及重复评价、空转场、有效列表、引语、立场比喻、亲测经历边界、客服礼貌和待通知状态。公开包不包含私人来稿或媒体全文。`style_goals` 不是授权删除作者独立观点。逐稿评审必须实际核对这些条件，未满足的具体问题写进 issues 并请求修正。
+
+语料来源、审阅方式及问题到用例的映射见 [研究记录](../RESEARCH.md)。媒体署名和数据集生成标签只用于来源追踪，不能直接作为写作质量的正负标签；新用例是针对编辑判断的公开开发集，不是作者检测器的隐藏测试集。
+
+每条任务沿用用例中的 `deai`，旧用例缺省为 off。可以用重复的 `--case` 精确选择公开用例，不修改用例文件、不影响个人启用门槛：
+
+```text
+python3 scripts/agent.py benchmark --mode prepare --case deai-commentary-light-001 --case deai-negative-control-001 --host codex/unknown
+```
+
+`--case` 不能与 `--limit`、`--candidate` 合用。`template_check` 与改前/改后的风格提示随记录保存。新增 warning 是编辑线索，正常排查结论、引语、格式和作者独立判断不应为追求零命中被删除。已自然的负对照允许不改；其脚本零命中也不能单独证明作者身份或自然度。
 
 遗漏的稿、没审完的稿不能算通过；fallback 也不能冒充成功改写。记录 review_mode 和 reviewer：同一上下文自审不算独立评测。另一个上下文也可能共享基础模型偏差，所以结果仍需要人工校准。
 
@@ -34,7 +44,9 @@ python3 scripts/agent.py benchmark --mode report --id BENCHMARK_ID
 python3 scripts/agent.py benchmark --mode prepare --candidate CANDIDATE_ID --host codex/unknown
 ```
 
-固定为 3 篇留存稿和 2 条公开用例，每条生成基础偏好与候选偏好两份，共 10 个 run。不得通过 --limit 缩短启用门槛。
+固定为 3 篇留存稿和 2 条公开用例，每条生成基础偏好与候选偏好两份，共 10 个 run。不得通过 --limit 或 --case 缩短启用门槛。留存稿的两组沿用该篇原始 `deai`；不能为测试候选而把用户授权的 off 升成 light/strong。
+
+相对于本次宿主实际使用的基线，每个变更的偏好键都必须在至少一个同场景、且模式允许它生效的用例中被实际覆盖。更换宿主后基线退回通用规则，保留的旧偏好也需要重新覆盖。全是 off 的留存稿不能验证新的 intensity/rhetoric/address；证据不足时停止准备，继续积累明确反馈，不自动提高强度。两组有效偏好相同的用例仍检查内容，但随机措辞差异不能计为候选收益。模式覆盖只证明偏好进入了任务，是否确实改善该原文仍须独立审校。
 
 每个生成任务只带其原文、场景、偏好及必要约束，不含用户的留存终稿。最好为每份输出使用独立上下文；若使用同一上下文，生成者可能看到另一份结果，不能在报告中称作严格隔离实验。
 

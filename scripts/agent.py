@@ -9,6 +9,10 @@ from pathlib import Path
 import sqlite3
 import sys
 
+# Isolated Python removes the script directory from sys.path. Only add this
+# package's resolved scripts directory; never import a runtime from the cwd.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 from runtime import VERSION
 from runtime.benchmark import Benchmark, offline
 from runtime.engine import Engine, ROOT, SCENES
@@ -60,6 +64,8 @@ def parser():
     start = command("start", "创建改写任务，返回给宿主执行的 draft 指令")
     start.add_argument("--text-file", required=True)
     start.add_argument("--host", default="unknown", help="宿主/模型配置标识，请如实填写")
+    start.add_argument("--deai", choices=("off", "light", "strong"), default="off",
+                       help="用户明确请求时开启去模板；light 只局部调整，strong 需另有语气/结构授权")
     scene(start)
     draft = command("draft", "保存宿主草稿并返回语义审评任务；最多三轮")
     run(draft)
@@ -86,6 +92,7 @@ def parser():
     benchmark.add_argument("--mode", required=True, choices=("offline", "prepare", "report"))
     benchmark.add_argument("--limit", type=int)
     benchmark.add_argument("--candidate")
+    benchmark.add_argument("--case", action="append", dest="case_ids", help="只运行指定公开开发用例，可重复；不能裁剪个人门控")
     benchmark.add_argument("--id", help="report 所需 benchmark ID")
     benchmark.add_argument("--host", default="unknown")
     compare = command("benchmark-review", "提交全部盲 A/B 比较结果，自审降级，不允许漏项")
@@ -111,15 +118,15 @@ def main(argv=None):
                           ("SKILL.md", "references/scenes.json", "benchmarks/agent_cases.jsonl", "benchmarks/evaluator_cases.jsonl")),
                       "network_calls": False, "requires_api_key": False}
         elif args.command == "benchmark" and args.mode == "offline":
-            if args.id or args.candidate or args.limit is not None:
-                raise ValueError("offline 不接受 id、candidate 或 limit")
+            if args.id or args.candidate or args.limit is not None or args.case_ids:
+                raise ValueError("offline 不接受 id、candidate、limit 或 case")
             result = offline()
         else:
             store = Store(directory)
             engine, learning, benchmark = Engine(store), Learning(store), Benchmark(store)
             command, user = args.command, args.user
             if command == "start":
-                result = engine.start(read_text(args.text_file, 16000), args.scene, user, args.host)
+                result = engine.start(read_text(args.text_file, 16000), args.scene, user, args.host, deai=args.deai)
             elif command == "draft":
                 result = engine.draft(args.run, read_text(args.text_file), user)
             elif command == "review":
@@ -139,10 +146,10 @@ def main(argv=None):
                 if args.mode == "prepare":
                     if args.id:
                         raise ValueError("prepare 不接受 id")
-                    result = benchmark.prepare(user, args.limit, args.candidate, args.host)
+                    result = benchmark.prepare(user, args.limit, args.candidate, args.host, case_ids=args.case_ids)
                 else:
-                    if not args.id or args.limit is not None or args.candidate:
-                        raise ValueError("report 必须提供 id，且不接受 limit/candidate")
+                    if not args.id or args.limit is not None or args.candidate or args.case_ids:
+                        raise ValueError("report 必须提供 id，且不接受 limit/candidate/case")
                     result = benchmark.report(args.id, user)
             elif command == "benchmark-review":
                 result = benchmark.submit_comparisons(args.id, read_json(args.json_file), user)

@@ -1,0 +1,12 @@
+冻结 v0.3 真实宿主公开开发集运行；仅5条 deai-* + 9条 corpus-* 原创合成用例。
+实际完成 14/14；最终状态 {"passed": 5, "passed_with_warnings": 1, "unchanged": 8}。
+总 draft 轮数 15；总实际 review 轮数 15；审校方式 {"independent": 15}。
+非一轮案例：corpus-empty-scaffolding-001。
+corpus-empty-scaffolding-001 第一轮删除空预告“先说一个变化”，静态检查报 QUANTITY_CHANGED；独立审校认为没有事实数量遗漏，但脚本仍返回 needs_revision。第二轮将“一个变化”并入功能实句，未改规则或用例。完整首轮记录保留。
+deai-commentary-light-001 保留原文两处揭示组织和真实AI因果排除，符合light边界；脚本以 REPEATED_CONTRAST warning 完成。
+改动文本 6 条，原文保留 8 条；changed只是文本差异，unchanged不等于风格改善。
+宿主 codex/current-session-model-unknown；生成上下文 context:release_forward；审校上下文 context:release_forward/independent_review，首次 spawn fork_turns=none。
+生成者在同一上下文处理全部14条；独立审校批量处理，第二轮沿用该审校上下文。实际基础模型名未知，可能同源。
+最终 fingerprint 1c2ec0c9704a1de47635c893ce06c7c469be77639f42cea0c792ca50d09e59cd；与冻结版本一致。
+公开开发集不是隐藏测试或AI作者检测；无私人稿、无用户反馈、无人类盲评、无长期收益或跨模型独立性证明。
+public-evidence.json 已以 <package>/<workdir>/<python> 替换机器绝对路径；审校 canonical task 改用 context: 标签。

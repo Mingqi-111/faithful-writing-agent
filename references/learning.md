@@ -16,6 +16,10 @@ python3 scripts/agent.py learn --scene douyin-tech --learning-mode same_context
 
 将 `{batch_id, preferences}` 写成 JSON：每项为 `{key,value,evidence_ids,reason}`，键值必须符合返回的 allowed_values。可调整开头、语气、句长倾向、结尾和比喻程度；不能新增作者经历、主题事实或更改核心规则。reason 只保存表达证据，不作为可执行指令。
 
+0.3 增加三个去模板偏好键：`intensity=preserve|soften`、`rhetoric=preserve|reduce`、`address=preserve|minimal`。soften 仅精简重复修辞强度，不改事实数量、频率、范围或关键立场。reduce 必须服从当前模式：light 不重写论证，strong 也不删真实排除项。minimal 保留实际问题、必要礼貌和听众指示。
+
+这三个键不能自动开启去模板：本次 deai=off 时从实际生成任务中排除，用户明确开启 light/strong 后才在该范围内使用。训练反馈携带当时模式；不能把某篇在 strong 下被接受推成所有文章都允许强改。个人 benchmark 的两组生成要使用相同、与原反馈一致的模式，旧反馈没有字段时按 off。
+
 ```text
 python3 scripts/agent.py propose --scene douyin-tech --json-file /工作目录/work/proposal.json
 ```
@@ -26,7 +30,7 @@ python3 scripts/agent.py propose --scene douyin-tech --json-file /工作目录/w
 
 按 [benchmark 协议](benchmark.md) 准备候选评测，完成所有生成、逐稿审查和 A/B 比较。不能用几个例子替代规定的五组，也不把新策略的名字告诉盲评者。
 
-通过标准：全部内容检查通过、至少一次候选胜出、没有败项，并满足实际审校方式的要求。全平局不证明收益。模型审校有偏差，少量样本也不是统计显著结论。
+通过标准：每个变更键都有允许其生效的评测覆盖，全部内容检查通过、至少一次有效候选胜出、没有败项，并满足实际审校方式的要求。全平局不证明收益；两组有效偏好相同的随机措辞差异不计收益。全 off 材料不能验证新的去模板键，应继续积累适用模式下的明确反馈。模型审校有偏差，少量样本也不是统计显著结论。
 
 用户说“启用通过的候选”或已授权满足条件后自动启用时：
 
@@ -42,7 +46,7 @@ python3 scripts/agent.py activate --candidate CANDIDATE_ID
 python3 scripts/agent.py rollback --scene douyin-tech
 ```
 
-支持逐次回到旧版本或默认策略，不删除旧反馈。换宿主/模型或修改规则后，旧验证不应继续宣称有效，需按实际运行结果重新评测。
+支持逐次回到旧版本或默认策略，不删除旧反馈。换宿主/模型或修改规则后，旧偏好会暂停应用，本次生成与个人评测的基线均退回通用规则；新候选保留的旧键也须重新覆盖。规则指纹过期时，允许提交同值候选重新评测，不删除旧记录。提案接口不接收宿主标识；仅换宿主而规则未变时，仍保留同值候选拒绝规则，不能声称旧偏好已迁移验证。
 
 ## 不做的“自我优化”
 
