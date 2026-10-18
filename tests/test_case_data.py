@@ -31,6 +31,8 @@ class BenchmarkDataTests(unittest.TestCase):
     def test_case_schema_and_unique_ids(self):
         rows = cases()
         scenes = json.loads((ROOT / "references/scenes.json").read_text(encoding="utf-8"))
+        legacy_scenes = json.loads((ROOT / "references/legacy-scenes.json").read_text(encoding="utf-8"))
+        self.assertFalse(scenes.keys() & legacy_scenes.keys())
         self.assertTrue(rows)
         self.assertEqual(len(rows), len({row["id"] for row in rows}))
         required = {"id", "scene", "source", "must_preserve", "must_not_add"}
@@ -40,7 +42,7 @@ class BenchmarkDataTests(unittest.TestCase):
                 self.assertTrue(required <= row.keys())
                 self.assertTrue(row.keys() <= allowed)
                 self.assertRegex(row["id"], r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-                self.assertIn(row["scene"], scenes)
+                self.assertIn(row["scene"], scenes.keys() | legacy_scenes.keys())
                 self.assertIsInstance(row["source"], str)
                 self.assertTrue(row["source"].strip())
                 self.assertLessEqual(len(row["source"]), 16000)

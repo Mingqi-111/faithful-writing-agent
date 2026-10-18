@@ -12,6 +12,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
+from runtime import VERSION
 from runtime.benchmark import Benchmark, read_cases
 from runtime.engine import Engine, fingerprint, review_schema, scene_config
 from runtime.evaluators import scan_style
@@ -76,7 +77,7 @@ class DeaiRuntimeTests(unittest.TestCase):
                                 cwd=self.temp.name, text=True, capture_output=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         data = json.loads(result.stdout)
-        self.assertEqual(data["version"], "0.3.0")
+        self.assertEqual(data["version"], VERSION)
         self.assertTrue(data["resources_present"])
         self.assertFalse((Path(self.temp.name) / ".faithful-writing-agent").exists())
 

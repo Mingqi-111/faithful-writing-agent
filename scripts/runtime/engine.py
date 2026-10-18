@@ -9,7 +9,11 @@ from . import VERSION
 from .evaluators import compare_style, deterministic_check, scan_style
 
 ROOT = Path(__file__).resolve().parents[2]
-SCENES = ("general", "douyin-tech", "xiaohongshu", "customer-service", "speech")
+SCENES = ("general", "fanqie-fiction", "xiaohongshu", "douyin-copy", "xiaohongshu-video",
+          "douyin-video", "wechat", "speech")
+# Historical IDs keep their own rules and data scope; they are not aliases for
+# current scenes, so legacy profiles cannot silently become new-scene defaults.
+LEGACY_SCENES = ("douyin-tech", "customer-service")
 TERMINAL = {"passed", "passed_with_warnings", "unchanged", "fallback"}
 GOOD = TERMINAL - {"fallback"}
 REVIEW_MODES = {"independent", "self_review", "human"}
@@ -58,7 +62,7 @@ def digest(text: str) -> str:
 
 
 def fingerprint() -> str:
-    paths = [ROOT / "SKILL.md", ROOT / "references/scenes.json"]
+    paths = [ROOT / "SKILL.md", ROOT / "references/scenes.json", ROOT / "references/legacy-scenes.json"]
     paths += sorted((ROOT / "references").glob("*.md"))
     paths += sorted((ROOT / "scripts").glob("*.py"))
     paths += sorted((ROOT / "scripts/runtime").glob("*.py"))
@@ -96,18 +100,28 @@ def boolean(value, label):
         raise ValueError(f"{label} 必须是 JSON true 或 false")
 
 
+def scene_id(scene: str):
+    if scene not in SCENES + LEGACY_SCENES:
+        raise ValueError("未知场景")
+    return scene
+
+
 def identity(user_id: str, scene: str):
     string(user_id, "user", 100)
-    if scene not in SCENES:
-        raise ValueError("未知场景")
+    scene_id(scene)
 
 
 def scene_config(scene: str, deai="off"):
+    scene_id(scene)
     deai_mode(deai)
-    path = ROOT / "references/scenes.json"
+    resource = "references/legacy-scenes.json" if scene in LEGACY_SCENES else "references/scenes.json"
+    path = ROOT / resource
     if not path.is_file():
-        raise ValueError("缺少 references/scenes.json；请使用完整发布包")
-    config = json.loads(path.read_text(encoding="utf-8"))[scene]
+        raise ValueError(f"缺少 {resource}；请使用完整发布包")
+    configs = json.loads(path.read_text(encoding="utf-8"))
+    if scene not in configs:
+        raise ValueError(f"{resource} 缺少场景 {scene}；请使用完整发布包")
+    config = configs[scene]
     instructions = config.pop("deai_instructions", {})
     if deai != "off" and deai in instructions:
         config["deai_instructions"] = instructions[deai]

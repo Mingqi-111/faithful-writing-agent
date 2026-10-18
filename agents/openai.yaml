@@ -1,6 +1,6 @@
 interface:
   display_name: "保义改写 Agent"
-  short_description: "直接改写文章，保留原意，记录反馈，并验证个性化表达偏好"
-  default_prompt: "请使用 $faithful-writing-agent 改写以下文章，保持原意，让表达自然。"
+  short_description: "改写文章、小说、图文与口播，保留原意，记录反馈并验证个人偏好"
+  default_prompt: "请使用 $faithful-writing-agent 改写以下文稿，保持原意，让表达自然。"
 policy:
   allow_implicit_invocation: true

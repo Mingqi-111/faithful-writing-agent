@@ -1,0 +1,12 @@
+冻结 v0.4 八类场景公开开发集的真实宿主执行记录。
+Benchmark benchmark_5b315f92c0d945baa262；宿主 codex/current-session-model-unknown。
+实际完成 8/8；最终状态 {"unchanged": 5, "passed": 3}。
+总 draft 8 轮；总实际 review 8 轮；审校方式 {"independent": 8}。
+改动输出 3 条，原文保留 5 条；失败/回退 0 条。
+修订案例 []；非通过轮次 []。
+生成者使用同一宿主上下文逐条处理；审校者以 fork_turns=none 新建，仅获得 review.md 与原始审校任务包，实际逐条审核。
+公开记录保留原始生成任务、每轮候选、静态提示、审校任务、真实审校、脚本回执、终稿、report、上下文派发、输入输出与哈希。路径已脱敏，未包含状态数据库。
+原始合成标识均保留。公开开发集可见且仅有8例，不能当成人类盲评、跨模型验证、真实用户采用、长期写作效果或AI检测成绩。
+生成者读过本项目规则、runtime/benchmark片段及旧v0.3说明；新上下文审校仍可能共享基础模型偏差。unchanged不代表风格改善。
+冻结指纹及执行后指纹 5e79969e1c66cafb6ee28ec8870c4c46c153b7e8b496d2e343d8a5fe126ebd09。
+host-v0.4.json SHA-256 6c44f45b4c1b7047a10c377eea256542d7b59defacd41deedf3d7bb7bfd41dcc。

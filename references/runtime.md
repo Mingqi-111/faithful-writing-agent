@@ -10,10 +10,12 @@
 
 ```text
 python3 scripts/agent.py doctor
-python3 scripts/agent.py start --text-file /工作目录/work/source.txt --scene douyin-tech --host codex/unknown
+python3 scripts/agent.py start --text-file /工作目录/work/source.txt --scene douyin-video --host codex/unknown
 ```
 
 `start` 另支持 `--deai off|light|strong`，默认 off。宿主根据正文之外的用户请求选择强度：去 AI 味/像真人写的使用 light；同时允许改语气或论述结构才使用 strong。反馈、任务恢复和 benchmark 都沿用本次模式，不能在 `draft` 阶段偷偷升级强度。旧记录没有该字段时视为 off，跨规则版本仍须按原版本门槛重新验证。
+
+当前八类主场景见 [scenes.json](scenes.json)。未说明用途时使用 `general`；只说“小红书”或“抖音”、未说明视频或口播时，分别使用 `xiaohongshu` 或 `douyin-copy`。只有明确的视频或口播用途才使用对应 `*-video`，场景选择不改变 deai 授权。兼容 ID `douyin-tech` 与 `customer-service` 保留 [旧规则](legacy-scenes.json) 和各自历史数据，不作为当前主分类，也不自动映射到新场景。
 
 ```text
 python3 -I scripts/agent.py doctor

@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from runtime import VERSION
 from runtime.benchmark import Benchmark, offline
-from runtime.engine import Engine, ROOT, SCENES
+from runtime.engine import Engine, ROOT, SCENES, scene_id
 from runtime.learning import Learning
 from runtime.store import Store
 
@@ -56,7 +56,8 @@ def parser():
         return sub
 
     def scene(sub):
-        sub.add_argument("--scene", choices=SCENES, default="general")
+        sub.add_argument("--scene", type=scene_id, default="general", metavar="SCENE",
+                         help=f"当前分类：{', '.join(SCENES)}；兼容历史场景 ID")
 
     def run(sub):
         sub.add_argument("--run", required=True, help="start 返回的 run ID")
@@ -115,7 +116,8 @@ def main(argv=None):
             result = {"version": VERSION, "python": sys.version.split()[0], "python_supported": sys.version_info >= (3, 11),
                       "root": str(ROOT), "sqlite_version": sqlite3.sqlite_version,
                       "resources_present": all((ROOT / path).is_file() for path in
-                          ("SKILL.md", "references/scenes.json", "benchmarks/agent_cases.jsonl", "benchmarks/evaluator_cases.jsonl")),
+                          ("SKILL.md", "references/scenes.json", "references/legacy-scenes.json",
+                           "benchmarks/agent_cases.jsonl", "benchmarks/evaluator_cases.jsonl")),
                       "network_calls": False, "requires_api_key": False}
         elif args.command == "benchmark" and args.mode == "offline":
             if args.id or args.candidate or args.limit is not None or args.case_ids:

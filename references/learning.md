@@ -2,10 +2,12 @@
 
 执行前先用 `profile --scene SCENE --user USER` 查看当前偏好和反馈数量。没有足够材料时正常改稿；不要编造反馈填满样本，也不要求首次用户上传历史作品。
 
+画像和反馈按场景隔离。新增的 `xiaohongshu-video` 与 `douyin-video` 从独立空间开始；兼容场景 `douyin-tech`、`customer-service` 保留旧规则和原有数据，不作为当前主分类，不把其历史反馈静默迁入任何新场景。
+
 ## 提取候选
 
 ```text
-python3 scripts/agent.py learn --scene douyin-tech --learning-mode same_context
+python3 scripts/agent.py learn --scene douyin-video --learning-mode same_context
 ```
 
 至少 6 篇不同原文的明确采用/修改反馈才会返回学习任务。留存的 3 篇需未被旧候选占用，重复评测前要积累新的留存反馈；较早记录至多取最近 12 篇训练并受长度预算限制。`batch_id` 冻结该次划分；不能自行读取数据库把留存稿补进学习提示词。这里的隔离是程序接口与操作规范，不是对有文件访问权限的宿主建立了安全隔离。
@@ -21,14 +23,14 @@ python3 scripts/agent.py learn --scene douyin-tech --learning-mode same_context
 这三个键不能自动开启去模板：本次 deai=off 时从实际生成任务中排除，用户明确开启 light/strong 后才在该范围内使用。训练反馈携带当时模式；不能把某篇在 strong 下被接受推成所有文章都允许强改。个人 benchmark 的两组生成要使用相同、与原反馈一致的模式，旧反馈没有字段时按 off。
 
 ```text
-python3 scripts/agent.py propose --scene douyin-tech --json-file /工作目录/work/proposal.json
+python3 scripts/agent.py propose --scene douyin-video --json-file /工作目录/work/proposal.json
 ```
 
 生成候选并不改变当前画像；训练集/留存集、学习方式、基础偏好与规则指纹均被冻结。同一批反馈不能反复提出不同候选以迎合留存集；仅换证据或理由、实际键值不变的候选也不能算策略升级。
 
 ## 验证与启用
 
-按 [benchmark 协议](benchmark.md) 准备候选评测，完成所有生成、逐稿审查和 A/B 比较。不能用几个例子替代规定的五组，也不把新策略的名字告诉盲评者。
+按 [benchmark 协议](benchmark.md) 准备候选评测，完成所有生成、逐稿审查和 A/B 比较。规定的五组仍是 3 篇留存稿加 2 条公开用例，与主场景数量无关；不能用几个例子替代，也不把新策略的名字告诉盲评者。
 
 通过标准：每个变更键都有允许其生效的评测覆盖，全部内容检查通过、至少一次有效候选胜出、没有败项，并满足实际审校方式的要求。全平局不证明收益；两组有效偏好相同的随机措辞差异不计收益。全 off 材料不能验证新的去模板键，应继续积累适用模式下的明确反馈。模型审校有偏差，少量样本也不是统计显著结论。
 
@@ -43,7 +45,7 @@ python3 scripts/agent.py activate --candidate CANDIDATE_ID
 回退：
 
 ```text
-python3 scripts/agent.py rollback --scene douyin-tech
+python3 scripts/agent.py rollback --scene douyin-video
 ```
 
 支持逐次回到旧版本或默认策略，不删除旧反馈。换宿主/模型或修改规则后，旧偏好会暂停应用，本次生成与个人评测的基线均退回通用规则；新候选保留的旧键也须重新覆盖。规则指纹过期时，允许提交同值候选重新评测，不删除旧记录。提案接口不接收宿主标识；仅换宿主而规则未变时，仍保留同值候选拒绝规则，不能声称旧偏好已迁移验证。
