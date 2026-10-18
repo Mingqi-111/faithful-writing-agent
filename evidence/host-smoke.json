@@ -1,0 +1,132 @@
+{
+  "benchmark_id": "benchmark_3bb165d0be1043d3b251",
+  "host": "codex/current-session-model-unknown",
+  "skill_version": "0.2.0",
+  "fingerprint": "f2959a1738e3765a516ed276efdd8c86062bf8f6d4f475af5b77e0d426e09106",
+  "generation_context": "/root/native_forward_test",
+  "review_context": "/root/native_forward_test/independent_reviewer",
+  "review_context_history": "fork_turns=none; only review.md and three review tasks supplied",
+  "review_scope": "A distinct context reviewed all three candidates; same underlying model is possible; no human review.",
+  "api_configured": false,
+  "web_server_started": false,
+  "global_install_performed": false,
+  "user_feedback_created": false,
+  "operations_difficulties": [],
+  "cases": [
+    {
+      "case_id": "tech-001",
+      "run_id": "run_c4594b14c03b4c569ede",
+      "status": "passed",
+      "attempts": 1,
+      "source": "这款芯片在内部测试中跑出了每秒120帧。测试只用了两款游戏，还不能说明所有游戏都会更快。",
+      "output": "内部测试中，这款芯片跑出了每秒120帧。但测试只用了两款游戏，还不能说明所有游戏都会更快。\n",
+      "review_mode": "independent",
+      "reviewer": "/root/native_forward_test/independent_reviewer",
+      "naturalness": 5,
+      "fidelity_pass": true,
+      "scene_pass": true,
+      "issues": [],
+      "review": {
+        "run_id": "run_c4594b14c03b4c569ede",
+        "draft_sha256": "307400ae994b77c2d2bbb671e053046bb29f33b4861eb53ff1070005a898458b",
+        "fidelity_pass": true,
+        "scene_pass": true,
+        "needs_revision": false,
+        "naturalness": 5,
+        "issues": [],
+        "review_mode": "independent",
+        "reviewer": "/root/native_forward_test/independent_reviewer"
+      }
+    },
+    {
+      "case_id": "style-tech-001",
+      "run_id": "run_252aa075103146ddb936",
+      "status": "passed",
+      "attempts": 1,
+      "source": "关于这次更新，我们先来了解一下这次更新的情况。具体来说，这次更新新增了离线搜索。换句话说，现在可以在离线时搜索本地文件。目前还在小范围测试，是否向所有用户开放还没有确定。",
+      "output": "这次更新新增了离线搜索，可以在离线时搜索本地文件。目前还在小范围测试，是否向所有用户开放还没有确定。\n",
+      "review_mode": "independent",
+      "reviewer": "/root/native_forward_test/independent_reviewer",
+      "naturalness": 5,
+      "fidelity_pass": true,
+      "scene_pass": true,
+      "issues": [],
+      "review": {
+        "run_id": "run_252aa075103146ddb936",
+        "draft_sha256": "5dda90f911c14a09b3e1e66641746d874483eb688ff624ae0cb69c57519548dc",
+        "fidelity_pass": true,
+        "scene_pass": true,
+        "needs_revision": false,
+        "naturalness": 5,
+        "issues": [],
+        "review_mode": "independent",
+        "reviewer": "/root/native_forward_test/independent_reviewer"
+      }
+    },
+    {
+      "case_id": "tech-002",
+      "run_id": "run_3c1d2ed43fd149a98181",
+      "status": "passed",
+      "attempts": 1,
+      "source": "新功能计划下个月开放测试，具体日期还没有公布。现阶段只确认支持安卓设备。",
+      "output": "新功能计划下个月开放测试，具体日期还没公布。目前只确认支持安卓设备。\n",
+      "review_mode": "independent",
+      "reviewer": "/root/native_forward_test/independent_reviewer",
+      "naturalness": 5,
+      "fidelity_pass": true,
+      "scene_pass": true,
+      "issues": [],
+      "review": {
+        "run_id": "run_3c1d2ed43fd149a98181",
+        "draft_sha256": "ba92cac9af7162c29629ef9edc4c93a85c1b5ca5b7e39b4af719261759ba7231",
+        "fidelity_pass": true,
+        "scene_pass": true,
+        "needs_revision": false,
+        "naturalness": 5,
+        "issues": [],
+        "review_mode": "independent",
+        "reviewer": "/root/native_forward_test/independent_reviewer"
+      }
+    }
+  ],
+  "report": {
+    "benchmark_id": "benchmark_3bb165d0be1043d3b251",
+    "mode": "host-public-development-set",
+    "fingerprint": "f2959a1738e3765a516ed276efdd8c86062bf8f6d4f475af5b77e0d426e09106",
+    "total_cases": 3,
+    "total_runs": 3,
+    "completed_runs": 3,
+    "complete": true,
+    "passed": true,
+    "completion_rate": 1.0,
+    "host": "codex/current-session-model-unknown",
+    "status": "complete",
+    "failed_runs": 0,
+    "details": [
+      {
+        "run_id": "run_c4594b14c03b4c569ede",
+        "case_id": "tech-001",
+        "status": "passed",
+        "review_mode": "independent",
+        "issues": []
+      },
+      {
+        "run_id": "run_252aa075103146ddb936",
+        "case_id": "style-tech-001",
+        "status": "passed",
+        "review_mode": "independent",
+        "issues": []
+      },
+      {
+        "run_id": "run_3c1d2ed43fd149a98181",
+        "case_id": "tech-002",
+        "status": "passed",
+        "review_mode": "independent",
+        "issues": []
+      }
+    ],
+    "review_basis": "host_declared_independent_or_human",
+    "note": "真实宿主生成的公开开发集结果；审评方式按宿主声明，不是检测器分数或独立性的技术证明。"
+  },
+  "artifact_note": "仅含公开开发样本。省略本机路径和数据库；未改变实测正文、评分或汇总结论。"
+}

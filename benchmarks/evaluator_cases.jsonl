@@ -1,0 +1,40 @@
+{"id": "same-001", "category": "equivalent", "source": "我们计划分析用户反馈。", "candidate": "我们计划对用户反馈进行分析。", "expected_codes": []}
+{"id": "same-002", "category": "equivalent", "source": "交付需要3天。", "candidate": "交付需要三天。", "expected_codes": []}
+{"id": "same-003", "category": "equivalent", "source": "预算为1万元。", "candidate": "预算为10,000元。", "expected_codes": []}
+{"id": "same-004", "category": "equivalent", "source": "预算为2.0万元。", "candidate": "预算为20000元。", "expected_codes": []}
+{"id": "same-005", "category": "equivalent", "source": "样本占比为20%。", "candidate": "样本占比为百分之二十。", "expected_codes": []}
+{"id": "same-006", "category": "equivalent", "source": "路程为1公里。", "candidate": "路程为1000米。", "expected_codes": []}
+{"id": "same-007", "category": "equivalent", "source": "等待时间为2小时。", "candidate": "等待时间为120分钟。", "expected_codes": []}
+{"id": "same-008", "category": "equivalent", "source": "幅度约为10—20%。", "candidate": "幅度约为10%至20%。", "expected_codes": []}
+{"id": "same-009", "category": "equivalent", "source": "版本包含3项改动。以下是这3项改动。", "candidate": "版本包含3项改动，说明如下。", "expected_codes": []}
+{"id": "same-010", "category": "equivalent", "source": "占比为２０％。", "candidate": "占比为20%。", "expected_codes": []}
+{"id": "number-001", "category": "quantity", "source": "交付时间是5天。", "candidate": "交付时间是2天。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "number-002", "category": "quantity", "source": "这项调整可能提升20%。", "candidate": "这项调整可能提升30%。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "number-003", "category": "quantity", "source": "交付时间缩短到2天。", "candidate": "交付时间从5天缩短到2天。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "number-004", "category": "quantity", "source": "本次调查覆盖120人。", "candidate": "本次调查覆盖受访者。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "number-005", "category": "quantity", "source": "团队正在评估方案。", "candidate": "团队正在评估3个方案。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "unit-001", "category": "unit", "source": "利润率提高了3%。", "candidate": "利润率提高了3个百分点。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "unit-002", "category": "unit", "source": "预算为2万元。", "candidate": "预算为2元。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "unit-003", "category": "unit", "source": "重量为5千克。", "candidate": "重量为5克。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "unit-004", "category": "unit", "source": "涨幅为20%。", "candidate": "涨幅为20倍。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "unit-005", "category": "unit", "source": "预算为100美元。", "candidate": "预算为100元。", "expected_codes": ["QUANTITY_CHANGED"]}
+{"id": "url-001", "category": "url", "source": "说明见 https://example.com/v1。", "candidate": "说明见 https://example.com/v2。", "expected_codes": ["URL_CHANGED"]}
+{"id": "url-002", "category": "url", "source": "说明见 https://example.com/guide。", "candidate": "可以阅读使用说明。", "expected_codes": ["URL_CHANGED"]}
+{"id": "url-003", "category": "url", "source": "详情（https://example.com/guide）。", "candidate": "详情：https://example.com/guide。", "expected_codes": []}
+{"id": "url-004", "category": "url", "source": "详情见 https://example.com/a_(b)。", "candidate": "详情：https://example.com/a_(b)。", "expected_codes": []}
+{"id": "code-001", "category": "code", "source": "运行 `python app.py`。", "candidate": "运行 `python main.py`。", "expected_codes": ["CODE_CHANGED"]}
+{"id": "code-002", "category": "code", "source": "示例：\n```python\nx = 1\n```", "candidate": "示例：\n```python\nx = 2\n```", "expected_codes": ["CODE_CHANGED"]}
+{"id": "code-003", "category": "code", "source": "运行 `python app.py`。", "candidate": "请运行 `python app.py`。", "expected_codes": []}
+{"id": "quote-001", "category": "direct_quote", "source": "负责人说：“目前还没有结果。”", "candidate": "负责人说：“已经取得结果。”", "expected_codes": ["DIRECT_QUOTE_CHANGED"]}
+{"id": "quote-002", "category": "direct_quote", "source": "负责人说：“目前还没有结果。”", "candidate": "负责人已经介绍了进展。", "expected_codes": ["DIRECT_QUOTE_CHANGED"]}
+{"id": "quote-003", "category": "direct_quote", "source": "负责人介绍了进展。", "candidate": "负责人说：“已经取得结果。”", "expected_codes": ["DIRECT_QUOTE_CHANGED"]}
+{"id": "quote-004", "category": "direct_quote", "source": "负责人说：“目前还没有结果。”", "candidate": "“目前还没有结果。”负责人说。", "expected_codes": []}
+{"id": "quote-005", "category": "quoted_term", "source": "界面中使用“工作台”这个名称。", "candidate": "界面中使用工作台这个名称。", "expected_codes": ["QUOTED_TEXT_CHANGED"]}
+{"id": "quote-006", "category": "direct_quote", "source": "原文：“结果尚待验证。”", "candidate": "原文：「结果尚待验证。」", "expected_codes": []}
+{"id": "style-001", "category": "legitimate_structure", "source": "不是网络问题，不是账号问题，也不是服务器故障，而是本机磁盘已满。", "candidate": "不是网络问题，不是账号问题，也不是服务器故障，而是本机磁盘已满。", "expected_codes": []}
+{"id": "style-002", "category": "legitimate_structure", "source": "这次检查十分重要。", "candidate": "这次检查很重要。", "expected_codes": []}
+{"id": "empty-001", "category": "empty", "source": "请保留这段内容。", "candidate": "", "expected_codes": ["EMPTY_OUTPUT"]}
+{"id": "blind-001", "category": "semantic_blindspot", "source": "这项调整可能有效，但尚未验证。", "candidate": "这项调整一定有效，已经验证。", "expected_codes": [], "semantic_review_required": true, "note": "故意展示确定性检查的盲区；expected_codes 为空不代表改稿正确。"}
+{"id": "blind-002", "category": "semantic_blindspot", "source": "我们不承诺当天退款。", "candidate": "我们承诺当天退款。", "expected_codes": [], "semantic_review_required": true, "note": "故意展示确定性检查的盲区；expected_codes 为空不代表改稿正确。"}
+{"id": "blind-003", "category": "semantic_blindspot", "source": "甲组有10人，乙组有20人。", "candidate": "甲组有20人，乙组有10人。", "expected_codes": [], "semantic_review_required": true, "note": "故意展示确定性检查的盲区；expected_codes 为空不代表改稿正确。"}
+{"id": "blind-004", "category": "semantic_blindspot", "source": "因为样本不足，结论尚不确定。", "candidate": "因为样本充足，结论已经确定。", "expected_codes": [], "semantic_review_required": true, "note": "故意展示确定性检查的盲区；expected_codes 为空不代表改稿正确。"}
