@@ -14,13 +14,13 @@
 
 应用可以执行包内的项目安装脚本。手动安装时，把整个技能文件夹放到对应位置：
 
-| 应用 | 安装位置 / 入口 | 本版状态 |
-|---|---|---|
-| Codex | 项目 `.agents/skills/faithful-writing-agent/` | 本地状态机可运行；提供本次验证记录 |
-| Claude Code | 项目 `.claude/skills/faithful-writing-agent/` | 按官方接口适配，未在 Claude 实机验收 |
-| WorkBuddy | 技能 → 添加技能 → 上传技能；或项目 `.codebuddy/skills/` | 官方支持入口，未在 WorkBuddy 实机验收 |
-| Claude 普通聊天 | Customize → Skills → 上传 ZIP，并启用代码执行 | 会话内可执行；精确记忆跨会话需导出/恢复 |
-| 扣子 / Coze | 桌面端添加本地技能目录；或上传技能后由平台打包部署 | 已核实官方入口，需验证代码环境和状态保存 |
+| 应用 | 安装位置 / 入口 |
+| --- | --- |
+| Codex | 项目 `.agents/skills/faithful-writing-agent/` |
+| Claude Code | 项目 `.claude/skills/faithful-writing-agent/` |
+| WorkBuddy | 技能 → 添加技能 → 上传技能；或项目 `.codebuddy/skills/` |
+| Claude 普通聊天 | Customize → Skills → 上传 ZIP，并启用代码执行 |
+| 扣子 / Coze | 桌面端添加本地技能目录；或上传技能后由平台打包部署 |
 
 各平台的入口和官方来源见 [平台接入说明](references/platforms.md)。一个 ZIP 不会自动获得所有应用的权限，也不保证各平台的长期记忆完全相同。桌面或编程环境通常更适合这个需要保存状态的版本。
 
