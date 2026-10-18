@@ -1,3 +1,3 @@
 """Local state, conservative checks and evaluation gates; no model or network calls."""
 
-VERSION = "0.4.0"
+VERSION = "0.4.1"
